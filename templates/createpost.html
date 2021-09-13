@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+
+{% block title %}Create Post{% endblock title %}
+
+{% block content %}
+    <form action="{% url 'create-post' %}" method='POST'>
+        {% csrf_token %}
+        <p>Title:
+        <input type="text" name="heading"></p>
+        <p>Content:
+        <textarea name="content" cols="30" rows="10" placeholder="post..."></textarea></p>
+
+        <button type="submit">Create Post</button>
+    </form>
+
+    
+{% endblock content %}

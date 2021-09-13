@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        Blog
+        {% endblock title %}
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+         #paul {
+            font-size: 50px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container">
+        
+        <div class="container bg-white">
+            <h1 class="text-muted text-center" id="paul">Paul's Blog</h1>
+        </div>
+
+        {% block content %}
+            {% for one in all_blogs %}
+                <a href="{% url 'post' one.id %}" style="text-decoration: none; color:black;">
+                    <div class="container bg-white" >
+    
+                            <h2 class="text-body">{{ one.Heading }}</h2><hr>
+                            <strong class="text-body">{{ one.date }}</strong>
+                            <p class="text-body"><i>{{ one.body|truncatewords:12 }}</i></p>
+                        
+                    </div>
+                </a>
+            {% endfor %}
+        {% endblock content %}
+    </div>
+</body>
+</html>

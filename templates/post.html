@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+
+{% block title %}POST{% endblock title %}
+
+{% block content %}
+<div class="container bg-white">
+
+    <h2 style="text-transform: uppercase;">{{ post.Heading }}</h2><hr>
+    <strong>{{ post.date }}</strong>
+    <p>{{ post.body }}</p>
+</div>
+
+<form action="{% url 'delete_all' %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">Delete All</button>
+</form>
+
+{% endblock content %}
